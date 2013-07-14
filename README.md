@@ -106,26 +106,9 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples*.jar pi 10 1000
 
 <pre>
 <code>
-sudo apt-get install hive sqoop-server
+sudo apt-get install hive
 </code>
 </pre>
-
-* In order to use sqoop with MySQL, you need to download the MySQL connector and drop it in Sqoop's lib directory. It doesn't get shipped with Sqoop due to licensing reasons
-
-<pre>
-<code>
-curl -L 'http://www.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.24.tar.gz/from/http://mysql.he.net/' | tar xz
-sudo cp mysql-connector-java-5.1.24/mysql-connector-java-5.1.24-bin.jar /usr/lib/sqoop/lib/
-</code>
-</pre>
-
-* Now we can run the command to import our table containing census data from MySQL to Hive, using Sqoop
-
-<pre>
-<code>
-sqoop import --connect jdbc:mysql://localhost/demo --table zipcode_incomes --username root -P -m 1 --create-hive-table --hive-import --hive-overwrite
-</pre>
-</code>
 
 To clean up
 -----------
