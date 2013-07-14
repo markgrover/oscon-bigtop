@@ -15,7 +15,7 @@ File list and description
 
 Instructions
 ------------
-* Let's prepare a VM for your setup. You can use any of OS for your VM. The setup script <b>dmeo-setup.sh</b> was run and has only been tested on Lucid. Also, I used [vagrant](http://www.vagrantup.com/) for all my VM needs. Vagrant builds on top of Virtualbox but you are welcome to use any VM Hypervisor software of your choice. All you need is a vanilla Linux install at the end of the day:-)
+* Let's prepare a VM for your setup. You can use any of OS for your VM. The setup script <b>dmeo-setup.sh</b> was run and has only been tested on Lucid. Also, I use [vagrant](http://www.vagrantup.com/) for all my VM needs. Vagrant builds on top of Virtualbox but you are welcome to use any VM Hypervisor software of your choice. All you need is a vanilla Linux install at the end of the day:-)
 Log in to the VM and run the following commands:
 
 <pre>
@@ -29,51 +29,100 @@ This setup may take a while, please be patient!
 
 Inspired from the [Bigtop wiki page](https://cwiki.apache.org/confluence/display/BIGTOP/How+to+install+Hadoop+distribution+from+Bigtop+0.6.0)
 * Add Bigtop key so you can use the Bigtop artifacts with apt-get
+
 <pre>
+<code>
 wget -O- http://archive.apache.org/dist/bigtop/bigtop-0.6.0/repos/GPG-KEY-bigtop | sudo apt-key add -
+</code>
 </pre>
+
 * Add Bigtop list, so apt-get knows where to find the Bigtop artifacts
+
 <pre>
+<code>
 sudo wget -O /etc/apt/sources.list.d/bigtop-0.6.0.list http://archive.apache.org/dist/bigtop/bigtop-0.6.0/repos/`lsb_release --codename --short`/bigtop.list
+</code>
 </pre>
+
 * Update apt-get so it sees our newly added Bigtop repository
-* <pre>
+
+<pre>
+</code>
 sudo apt-get update
+</code>
 </pre>
+
 * Install our pseduo-distributed hadoop package from Apache Bigtop
+
 <pre>
+<code>
 sudo apt-get install hadoop-conf-pseudo
+</code>
 </pre>
+
 * Initialize the name (needs to be done only once). Don't do it again, it will format (i.e wipe off) the data in your cluster (i.e. data on HDFS).
-sudo service hadoop-hdfs-namenode init
-* Start the namenode and datanode
+
 <pre>
+<code>
+sudo service hadoop-hdfs-namenode init
+</code>
+</pre>
+
+* Start the namenode and datanode
+
+<pre>
+<code>
 sudo service hadoop-hdfs-namenode start
 sudo service hadoop-hdfs-datanode start
+</code>
 </pre>
+
 * Initialize HDFS. This creates a bunch of directories on HDFS that are required for YARN to run
+
 <pre>
+<code>
 ./init-hdfs.sh
 </pre>
+</code>
+
 * Restart YARN daemons. Yarn needs the directories created by the previous step to work properly. Since we just created those directories, let's restart YARN daemons.
+
 <pre>
+<code>
 sudo service hadoop-yarn-resourcemanager restart
 sudo service hadoop-yarn-nodemanager restart
 </pre>
+</code>
+
 * Time to run our first MapReduce Job. This is run using MapReduce v2, running on top of YARN.
+
 <pre>
+<code>
 hadoop jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples*.jar pi 10 1000
+</code>
 </pre>
+
 * If you want to install more artifacts, all you do is run a simple apt-get command
+
 <pre>
+<code>
 sudo apt-get install hive sqoop
+</code>
 </pre>
+
 * In order to use sqoop with MySQL, you need to download the MySQL connector and drop it in Sqoop's lib directory. It doesn't get shipped with Sqoop due to licensing reasons
+
 <pre>
+<code>
 curl -L 'http://www.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.24.tar.gz/from/http://mysql.he.net/' | tar xz
 sudo cp mysql-connector-java-5.1.24/mysql-connector-java-5.1.24-bin.jar /usr/lib/sqoop/lib/
+</code>
 </pre>
+
 * Now we can run the command to import our table containing census data from MySQL to Hive, using Sqoop
+
 <pre>
+<code>
 sqoop import --connect jdbc:mysql://localhost/demo --table zipcode_incomes --username root -P -m 1 --create-hive-table --hive-import --hive-overwrite
 </pre>
+</code>
