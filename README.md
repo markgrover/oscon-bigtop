@@ -106,7 +106,7 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples*.jar pi 10 1000
 
 <pre>
 <code>
-sudo apt-get install hive sqoop
+sudo apt-get install hive sqoop-server
 </code>
 </pre>
 
