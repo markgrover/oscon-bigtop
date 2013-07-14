@@ -126,3 +126,15 @@ sudo cp mysql-connector-java-5.1.24/mysql-connector-java-5.1.24-bin.jar /usr/lib
 sqoop import --connect jdbc:mysql://localhost/demo --table zipcode_incomes --username root -P -m 1 --create-hive-table --hive-import --hive-overwrite
 </pre>
 </code>
+
+To clean up
+-----------
+
+<pre>
+<code>
+sudo rm -rf /var/lib/hadoop-hdfs/cache/*
+sudo service hadoop-hdfs-datanode stop
+sudo service hadoop-hdfs-namenode stop
+sudo service hadoop-hdfs-namenode init
+</code>
+</pre>
