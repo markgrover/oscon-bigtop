@@ -81,7 +81,7 @@ sudo service hadoop-hdfs-datanode start
 
 <pre>
 <code>
-sudo /usr/lib/hadoop/libexec/init-hdfs.sh -u $USER
+sudo /usr/lib/hadoop/libexec/init-hdfs.sh -u mapred
 </pre>
 </code>
 
