@@ -59,7 +59,7 @@ PKGS="bigtop-jsvc bigtop-utils hadoop hadoop-client hadoop-conf-pseudo hadoop-hd
 hadoop-hdfs-namenode hadoop-hdfs-secondarynamenode hadoop-mapreduce hadoop-mapreduce-historyserver \
 hadoop-yarn hadoop-yarn-nodemanager hadoop-yarn-resourcemanager hive sqoop zookeeper"
 OR_SEPARATED=${PKGS// /\\|}
-URLS=`curl http://bigtop01.cloudera.org:8080/job/Bigtop-0.6.0/label=lucid//lastSuccessfulBuild/artifact/output/apt/dists/bigtop/contrib/binary-amd64/Packages | sed -ne '/^Filename:/s#^Filename: #'"http://bigtop01.cloudera.org:8080/job/Bigtop-0.6.0/label=lucid//lastSuccessfulBuild/artifact/output/apt/"'#p' | grep $OR_SEPARATED`
+URLS=`curl http://bigtop.s3.amazonaws.com/releases/0.6.0/ubuntu/lucid/x86_64/dists/bigtop/contrib/binary-amd64/Packages | sed -ne '/^Filename:/s#^Filename: #'"http://bigtop.s3.amazonaws.com/releases/0.6.0/ubuntu/lucid/x86_64/"'#p' | grep $OR_SEPARATED`
 wget $URLS
 cd ..
 
