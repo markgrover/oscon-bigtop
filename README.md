@@ -47,7 +47,7 @@ sudo wget -O /etc/apt/sources.list.d/bigtop-0.6.0.list http://archive.apache.org
 * Update apt-get so it sees our newly added Bigtop repository
 
 <pre>
-</code>
+<code>
 sudo apt-get update
 </code>
 </pre>
