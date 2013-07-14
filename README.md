@@ -110,8 +110,37 @@ sudo apt-get install hive
 </code>
 </pre>
 
-To clean up
------------
+* There is a [bug in Bigtop](https://issues.apache.org/jira/browse/BIGTOP-987) because of which we have to correct the permission of one of the HDFS directories before we run hive. Let's do that first
+
+<pre>
+<code>
+sudo -u hdfs hadoop fs -chmod -R 1777 /tmp
+</code>
+</pre>
+
+* Let's create a table in Hive
+
+<pre>
+<code>
+CREATE TABLE zipcode_incomes(id STRING, zip STRING, description1 STRING, description2 STRING, income INT)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+</code>
+</pre>
+
+
+* Load the data in Hive
+
+<pre>
+<code>
+cd ~
+LOAD DATA LOCAL INPATH 'workspace/dataset/DEC_00_SF3_P077_with_ann.csv' OVERWRITE INTO TABLE zipcode_incomes;
+</code>
+</pre>
+
+* Run Hive queries!
+
+To clean up (only if necessary)
+-------------------------------
 
 <pre>
 <code>
