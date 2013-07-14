@@ -15,6 +15,18 @@ File list and description
 
 Instructions
 ------------
+* Let's prepare a VM for your setup. You can use any of OS for your VM. The setup script <b>dmeo-setup.sh</b> was run and has only been tested on Lucid. Also, I used [vagrant](http://www.vagrantup.com/) for all my VM needs. Vagrant builds on top of Virtualbox but you are welcome to use any VM Hypervisor software of your choice. All you need is a vanilla Linux install at the end of the day:-)
+Log in to the VM and run the following commands:
+
+<pre>
+<code>
+wget https://raw.github.com/markgrover/oscon-bigtop/master/demo-setup.sh
+./demo-setup.sh
+</code>
+</pre>
+
+This setup may take a while, please be patient!
+
 Inspired from the [Bigtop wiki page](https://cwiki.apache.org/confluence/display/BIGTOP/How+to+install+Hadoop+distribution+from+Bigtop+0.6.0)
 * Add Bigtop key so you can use the Bigtop artifacts with apt-get
 <pre>
