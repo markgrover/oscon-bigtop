@@ -5,7 +5,7 @@ Resources for the demo presented at Bigtop presentation at OSCON 2013
 
 Introduction
 ------------
-This repository contains data and code for use by a beginner's introduction to Apache Bigtop. All instructions have been inspired from the instructions on the [Bigtop wiki page for 0.5.0](https://cwiki.apache.org/confluence/display/BIGTOP/How+to+install+Hadoop+distribution+from+Bigtop+0.5.0)
+This repository contains data and code for use by a beginner's introduction to Apache Bigtop. All instructions have been inspired from the instructions on the [Bigtop wiki page for 0.6.0](https://cwiki.apache.org/confluence/display/BIGTOP/How+to+install+Hadoop+distribution+from+Bigtop+0.6.0)
 
 File list and description
 -------------------------
@@ -15,14 +15,14 @@ File list and description
 
 Instructions
 ------------
-Inspired from the [Bigtop wiki page](https://cwiki.apache.org/confluence/display/BIGTOP/How+to+install+Hadoop+distribution+from+Bigtop+0.5.0)
+Inspired from the [Bigtop wiki page](https://cwiki.apache.org/confluence/display/BIGTOP/How+to+install+Hadoop+distribution+from+Bigtop+0.6.0)
 * Add Bigtop key so you can use the Bigtop artifacts with apt-get
 <pre>
-wget -O- http://archive.apache.org/dist/bigtop/bigtop-0.5.0/repos/GPG-KEY-bigtop | sudo apt-key add -
+wget -O- http://archive.apache.org/dist/bigtop/bigtop-0.6.0/repos/GPG-KEY-bigtop | sudo apt-key add -
 </pre>
 * Add Bigtop list, so apt-get knows where to find the Bigtop artifacts
 <pre>
-sudo wget -O /etc/apt/sources.list.d/bigtop-0.5.0.list http://archive.apache.org/dist/bigtop/bigtop-0.5.0/repos/`lsb_release --codename --short`/bigtop.list
+sudo wget -O /etc/apt/sources.list.d/bigtop-0.6.0.list http://archive.apache.org/dist/bigtop/bigtop-0.6.0/repos/`lsb_release --codename --short`/bigtop.list
 </pre>
 * Update apt-get so it sees our newly added Bigtop repository
 * <pre>
