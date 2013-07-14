@@ -42,13 +42,6 @@ create table zipcode_incomes(
 "
 mysql -uroot -proot -e "load data local infile 'dataset/DEC_00_SF3_P077_with_ann.csv' into table demo.zipcode_incomes fields terminated by ',' lines terminated by '\n'"
 
-# Install init-hdfs script it's only present starting Bigtop 0.6 (BIGTOP-547)
-wget https://raw.github.com/apache/bigtop/master/bigtop-packages/src/common/hadoop/init-hdfs.sh
-chmod 755 init-hdfs.sh
-
-# There is a bug in init-hdfs.sh right now because of which it doesn't create the /user/$USER directory in HDFS. This hack goes around that bug (BIGTOP-852)
-sed -i -e '$a sudo -u hdfs hadoop fs -mkdir /user/$USER\nsudo -u hdfs hadoop fs -chmod -R 777 /user/$USER\nsudo -u hdfs hadoop fs -chown $USER /user/$USER' -e "s/\-ex/-x/g" init-hdfs.sh
-
 # Plan B: in case of internet connectivity, it will be nice to have all the debs and dependencies so
 # we can just install all components from there
 mkdir debs
