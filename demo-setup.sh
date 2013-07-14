@@ -55,9 +55,9 @@ mkdir debs
 cd debs
 # This was done on lucid which doesn't have the recently introduced apt-get download functionality
 # so we have to do some hackery to download all the debs required
-PKGS="bigtop-jsvc bigtop-utils hadoop hadoop-client hadoop-conf-pseudo hadoop-hdfs hadoop-hdfs-datanode \
+PKGS="bigtop-jsvc bigtop-tomcat bigtop-utils hadoop hadoop-client hadoop-conf-pseudo hadoop-hdfs hadoop-hdfs-datanode \
 hadoop-hdfs-namenode hadoop-hdfs-secondarynamenode hadoop-mapreduce hadoop-mapreduce-historyserver \
-hadoop-yarn hadoop-yarn-nodemanager hadoop-yarn-resourcemanager hive sqoop zookeeper"
+hadoop-yarn hadoop-yarn-nodemanager hadoop-yarn-resourcemanager hive hive-jdbc sqoop sqoop-client zookeeper"
 OR_SEPARATED=${PKGS// /\\|}
 URLS=`curl http://bigtop.s3.amazonaws.com/releases/0.6.0/ubuntu/lucid/x86_64/dists/bigtop/contrib/binary-amd64/Packages | sed -ne '/^Filename:/s#^Filename: #'"http://bigtop.s3.amazonaws.com/releases/0.6.0/ubuntu/lucid/x86_64/"'#p' | grep $OR_SEPARATED`
 wget $URLS
