@@ -13,9 +13,9 @@ File list and description
 * <b>demo-setup.sh:</b> A script I used to provision a single node for using in my demo. This script installs some essential tools and software, grabs a well known publicly available dataset and inserts it into a relational DB. Note that this script was run on Ubuntu Lucid 64 bit machine. It should work on other Ubuntu/Debian variants as well. It can be easily ported for use on RPM based systems. I haven't gotten a chance to do so but if you decide to do so, please send me a pull request, thanks! Note that Ubuntu doesn't come with JDK6 by default so this script also installs Oracle JDK6. By the time this script is done, your machine is ready for installing Bigtop as per the instructions below.
 * <b>median_income_by_zipcode_census_2000.zip:</b> A household income dataset from 2000 United States Census for use in the demo.
 
-Instructions
-------------
-* Let's prepare a VM for your setup. You can use any of OS for your VM. The setup script <b>dmeo-setup.sh</b> was run and has only been tested on Lucid. Also, I use [vagrant](http://www.vagrantup.com/) for all my VM needs. Vagrant builds on top of Virtualbox but you are welcome to use any VM Hypervisor software of your choice. All you need is a vanilla Linux install at the end of the day:-)
+Demo VM setup
+-------------
+Let's prepare a VM for your setup. You can use any of OS for your VM. The setup script <b>dmeo-setup.sh</b> was run and has only been tested on Lucid. Also, I use [vagrant](http://www.vagrantup.com/) for all my VM needs. Vagrant builds on top of Virtualbox but you are welcome to use any VM Hypervisor software of your choice. All you need is a vanilla Linux install at the end of the day:-)
 Log in to the VM and run the following commands:
 
 <pre>
@@ -27,6 +27,8 @@ wget https://raw.github.com/markgrover/oscon-bigtop/master/demo-setup.sh
 
 This setup may take a while, please be patient!
 
+Instructions
+------------
 Inspired from the [Bigtop wiki page](https://cwiki.apache.org/confluence/display/BIGTOP/How+to+install+Hadoop+distribution+from+Bigtop+0.6.0)
 * Add Bigtop key so you can use the Bigtop artifacts with apt-get
 
