@@ -84,7 +84,7 @@ sudo service hadoop-hdfs-datanode start
 
 <pre>
 <code>
-sudo /usr/lib/hadoop/libexec/init-hdfs.sh -u mapred
+sudo /usr/lib/hadoop/libexec/init-hdfs.sh -u jenkins
 </pre>
 </code>
 
@@ -101,7 +101,7 @@ sudo service hadoop-yarn-nodemanager restart
 
 <pre>
 <code>
-sudo -u mapred hadoop jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples*.jar pi 10 1000
+sudo -u jenkins hadoop jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples*.jar pi 10 1000
 </code>
 </pre>
 
