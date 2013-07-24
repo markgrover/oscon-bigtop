@@ -84,7 +84,7 @@ sudo service hadoop-hdfs-datanode start
 
 <pre>
 <code>
-sudo /usr/lib/hadoop/libexec/init-hdfs.sh -u $USER
+sudo /usr/lib/hadoop/libexec/init-hdfs.sh -u mapred
 </pre>
 </code>
 
@@ -101,7 +101,7 @@ sudo service hadoop-yarn-nodemanager restart
 
 <pre>
 <code>
-hadoop jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples*.jar pi 10 1000
+sudo -u mapred hadoop jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples*.jar pi 10 1000
 </code>
 </pre>
 
@@ -121,22 +121,22 @@ sudo -u hdfs hadoop fs -chmod -R 1777 /tmp
 </code>
 </pre>
 
-* Let's create a table in Hive
+* Let's create a table in Hive. On bash, type:
 
 <pre>
 <code>
-CREATE TABLE zipcode_incomes(id STRING, zip STRING, description1 STRING, description2 STRING, income INT)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+hive -e "CREATE TABLE zipcode_incomes(id STRING, zip STRING, description1 STRING, description2 STRING, income INT)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','"
 </code>
 </pre>
 
 
-* Load the data in Hive
+* Load the data in Hive. On bash, type:
 
 <pre>
 <code>
 cd ~
-LOAD DATA LOCAL INPATH 'workspace/dataset/DEC_00_SF3_P077_with_ann.csv' OVERWRITE INTO TABLE zipcode_incomes;
+hive -e "LOAD DATA LOCAL INPATH 'workspace/dataset/DEC_00_SF3_P077_with_ann.csv' OVERWRITE INTO TABLE zipcode_incomes"
 </code>
 </pre>
 
