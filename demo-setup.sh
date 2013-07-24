@@ -4,13 +4,15 @@
 WORKSPACE="workspace"
 DATASET_LOC="https://raw.github.com/markgrover/apachecon-bigtop/master/median_income_by_zipcode_census_2000.zip"
 
+# Might be an old box so let's update the repos for apt-get before we do anything else
+sudo apt-get update
+
 # Install some essential packages
 sudo apt-get -y install curl vim
 
 mkdir -p $WORKSPACE
 cd $WORKSPACE
-# Might be an old box so let's update the repos for apt-get before we do anything else
-sudo apt-get update
+
 # Install java6 JDK
 wget http://archive.cloudera.com/cm4/ubuntu/lucid/amd64/cm/pool/contrib/o/oracle-j2sdk1.6/oracle-j2sdk1.6_1.6.0+update31_amd64.deb
 # Installing java might return a non-zero return code because of missing dependencies. This will be fixed by the next
