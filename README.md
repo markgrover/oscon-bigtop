@@ -21,6 +21,7 @@ Log in to the VM and run the following commands:
 <pre>
 <code>
 wget https://raw.github.com/markgrover/oscon-bigtop/master/demo-setup.sh
+chmod 755 ./demo-setup.sh
 ./demo-setup.sh
 </code>
 </pre>
